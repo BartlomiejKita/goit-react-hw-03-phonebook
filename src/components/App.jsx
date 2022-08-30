@@ -6,6 +6,7 @@ import ContactList from './ContactList';
 import Notification from './Notification';
 import styled from 'styled-components';
 import { save, load } from '../utilities/json';
+import isEmpty from 'utilities/isEmpty';
 
 const Center = styled.div`
   position: relative;
@@ -90,7 +91,7 @@ class App extends Component {
 
           <SecondHeader>Contacts</SecondHeader>
           <Filter onChange={this.handleFilter} />
-          {Object.keys(this.state.contacts).length === 0 ? (
+          {isEmpty(this.state.contacts) ? (
             <Notification message="There is no contacts to show" />
           ) : (
             <ContactList
